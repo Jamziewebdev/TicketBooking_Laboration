@@ -1,3 +1,5 @@
+using TicketBookingCore;
+
 namespace TicketBookingCore.Tests
 {
     public class TicketBookingRequestProcessorTests
@@ -39,5 +41,20 @@ namespace TicketBookingCore.Tests
             Assert.Equal("request", exception.ParamName);
         }
 
+        [Fact]
+        public void ShouldSaveToDatabase()
+        {
+            // Arrange
+            var request = new TicketBookingRequest
+            {
+                FirstName = "Jamie",
+                LastName = "Ziegler",
+                Email = "fake@mail.com"
+            };
+
+            // Act
+            TicketBookingResponse response = _processor.Book(request);
+
+        }
     }
 }
